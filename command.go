@@ -57,7 +57,7 @@ type AccountConfiguration struct {
 // Admin account created during Setup Assistant
 type AdminAccount struct {
 	ShortName    string `plist:"shortName" json:"short_name"`
-	FullName     string `plist:"fullName,omitempty" json:"short_name,omitempty"`
+	FullName     string `plist:"fullName,omitempty" json:"full_name,omitempty"`
 	PasswordHash data   `plist:"passwordHash" json:"password_hash"`
 	Hidden       bool   `plist:"hidden,omitempty" json:"hidden,omitempty"`
 }

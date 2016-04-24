@@ -21,6 +21,10 @@ type auth struct {
 	SerialNumber string
 	IMEI         string
 	MEID         string
+	DeviceName   string `plist:"DeviceName,omitempty"`
+	Challenge    []byte `plist:"Challenge,omitempty"`
+	Model        string `plist:"Model,omitpempty"`
+	ModelName    string `plist:"ModelName,omitempty"`
 }
 
 // TokenUpdate Mesage Type

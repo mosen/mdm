@@ -60,6 +60,7 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		"SecurityInfo",
 		"CertificateList",
 		"OSUpdateStatus",
+		"DeviceConfigured",
 		"AvailableOSUpdates":
 		return payload, nil
 	case "InstallApplication":

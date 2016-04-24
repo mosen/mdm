@@ -31,6 +31,19 @@ type update struct {
 	AwaitingConfiguration bool
 }
 
+// DEPEnrollmentRequest is a request sent
+// by the device to an MDM server during
+// DEP Enrollment
+type DEPEnrollmentRequest struct {
+	Language string `plist:"LANGUAGE"`
+	Product  string `plist:"PRODUCT"`
+	Serial   string `plist:"SERIAL"`
+	UDID     string `plist:"UDID"`
+	Version  string `plist:"VERSION"`
+	IMEI     string `plist:"IMEI,omitempty"`
+	MEID     string `plist:"MEID,omitempty"`
+}
+
 // data decodes to []byte,
 // we can then attach a string method to the type
 // Tokens are encoded as Hex Strings

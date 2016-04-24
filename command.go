@@ -14,6 +14,7 @@ type CommandRequest struct {
 	// DeviceInformation request
 	Queries []string `json:"queries,omitempty"`
 	InstallApplication
+	AccountConfiguration
 }
 
 // Payload is an MDM payload
@@ -26,6 +27,7 @@ type command struct {
 	RequestType string
 	DeviceInformation
 	InstallApplication
+	AccountConfiguration
 }
 
 // InstallApplication is a InstallApplication MDM Comand
@@ -42,6 +44,25 @@ type InstallApplication struct {
 type DeviceInformation struct {
 	Queries []string `plist:",omitempty" json:"queries,omitempty"`
 }
+
+// AccountConfiguration is an MDM command to create a primary user on OS X
+// It allows skipping the UI to set up a user.
+type AccountConfiguration struct {
+	SkipPrimarySetupAccountCreation     bool           `plist:",omitempty" json:"skip_primary_setup_account_creation,omitempty"`
+	SetPrimarySetupAccountAsRegularUser bool           `plist:",omitempty" json:"skip_primary_setup_account_as_regular_user,omitempty"`
+	AutoSetupAdminAccounts              []AdminAccount `plist:",omitempty" json:"auto_setup_admin_accounts,omitempty"`
+}
+
+// AdminAccount is the configuration for the
+// Admin account created during Setup Assistant
+type AdminAccount struct {
+	ShortName    string `plist:"shortName" json:"short_name"`
+	FullName     string `plist:"fullName,omitempty" json:"short_name,omitempty"`
+	PasswordHash data   `plist:"passwordHash" json:"password_hash"`
+	Hidden       bool   `plist:"hidden,omitempty" json:"hidden,omitempty"`
+}
+
+type data []byte
 
 func newPayload(requestType string) *Payload {
 	u := uuid.NewV4()
@@ -65,6 +86,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		return payload, nil
 	case "InstallApplication":
 		payload.Command.InstallApplication = request.InstallApplication
+	case "AccountConfiguration":
+		payload.Command.AccountConfiguration = request.AccountConfiguration
 	default:
 		return nil, fmt.Errorf("Unsupported MDM RequestType %v", requestType)
 	}

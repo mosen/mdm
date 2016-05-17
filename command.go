@@ -15,6 +15,7 @@ type CommandRequest struct {
 	Queries []string `json:"queries,omitempty"`
 	InstallApplication
 	AccountConfiguration
+	ScheduleOSUpdateScan
 }
 
 // Payload is an MDM payload
@@ -28,6 +29,7 @@ type command struct {
 	DeviceInformation
 	InstallApplication
 	AccountConfiguration
+	ScheduleOSUpdateScan
 }
 
 // InstallApplication is a InstallApplication MDM Comand
@@ -51,6 +53,11 @@ type AccountConfiguration struct {
 	SkipPrimarySetupAccountCreation     bool           `plist:",omitempty" json:"skip_primary_setup_account_creation,omitempty"`
 	SetPrimarySetupAccountAsRegularUser bool           `plist:",omitempty" json:"skip_primary_setup_account_as_regular_user,omitempty"`
 	AutoSetupAdminAccounts              []AdminAccount `plist:",omitempty" json:"auto_setup_admin_accounts,omitempty"`
+}
+
+// ScheduleOSUpdateScan schedules an OS SoftwareUpdate check
+type ScheduleOSUpdateScan struct {
+	Force bool `plist:",omitempty" json:"force,omitempty"`
 }
 
 // AdminAccount is the configuration for the
@@ -77,6 +84,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 	switch requestType {
 	case "DeviceInformation":
 		payload.Command.DeviceInformation.Queries = request.Queries
+	case "ScheduleOSUpdateScan":
+		payload.Command.ScheduleOSUpdateScan = request.ScheduleOSUpdateScan
 	case "ProfileList",
 		"SecurityInfo",
 		"CertificateList",

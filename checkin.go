@@ -33,6 +33,15 @@ type update struct {
 	PushMagic             string
 	UnlockToken           hexData
 	AwaitingConfiguration bool
+	userTokenUpdate
+}
+
+// TokenUpdate with user keys
+type userTokenUpdate struct {
+	UserID        string `plist:",omitempty"`
+	UserLongName  string `plist:",omitempty"`
+	UserShortName string `plist:",omitempty"`
+	NotOnConsole  bool   `plist:",omitempty"`
 }
 
 // DEPEnrollmentRequest is a request sent

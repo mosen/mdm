@@ -25,7 +25,7 @@ type Payload struct {
 }
 
 type command struct {
-	RequestType string
+	RequestType string `json:"request_type"`
 	DeviceInformation
 	InstallApplication
 	AccountConfiguration

@@ -16,6 +16,7 @@ type CommandRequest struct {
 	InstallApplication
 	AccountConfiguration
 	ScheduleOSUpdateScan
+	InstallProfile
 }
 
 // Payload is an MDM payload
@@ -28,11 +29,12 @@ type command struct {
 	RequestType string `json:"request_type"`
 	DeviceInformation
 	InstallApplication
+	InstallProfile
 	AccountConfiguration
 	ScheduleOSUpdateScan
 }
 
-// InstallApplication is a InstallApplication MDM Comand
+// InstallApplication is an InstallApplication MDM Command
 type InstallApplication struct {
 	ITunesStoreID   int    `plist:"iTunesStoreID,omitempty" json:"itunes_store_id,omitempty"`
 	Identifier      string `plist:",omitempty" json:"identifier,omitempty"`
@@ -40,6 +42,11 @@ type InstallApplication struct {
 	ManagementFlags int    `plist:",omitempty" json:"management_flags,omitempty"`
 	NotManaged      bool   `plist:",omitempty" json:"not_managed,omitempty"`
 	// TODO: add remaining optional fields
+}
+
+// InstallProfile is an InstallProfile MDM Command
+type InstallProfile struct {
+	Payload []byte `plist:"Payload" json:"payload"`
 }
 
 // DeviceInformation is a DeviceInformation MDM Command
@@ -95,6 +102,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		return payload, nil
 	case "InstallApplication":
 		payload.Command.InstallApplication = request.InstallApplication
+	case "InstallProfile":
+		payload.Command.InstallProfile = request.InstallProfile
 	case "AccountConfiguration":
 		payload.Command.AccountConfiguration = request.AccountConfiguration
 	default:

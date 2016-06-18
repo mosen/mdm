@@ -46,7 +46,7 @@ type InstallApplication struct {
 
 // InstallProfile is an InstallProfile MDM Command
 type InstallProfile struct {
-	Payload []byte `plist:"Payload" json:"payload"`
+	Payload []byte `plist:",omitempty" json:"payload,omitempty"`
 }
 
 // DeviceInformation is a DeviceInformation MDM Command

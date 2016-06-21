@@ -48,7 +48,7 @@ type CommonQueryResponses struct {
 	EthernetMACs []string // Surprisingly works in IOS
 }
 
-// AtvQueryResponses contains AppleTV QuerryResponses
+// AtvQueryResponses contains AppleTV QueryResponses
 type AtvQueryResponses struct {
 }
 
@@ -75,6 +75,20 @@ type IosQueryResponses struct {
 	SubscriberMNC            string
 	CurrentMCC               string
 	CurrentMNC               string
+}
+
+// OSUpdateSettingsResponse contains information about macOS update settings.
+type OSUpdateSettingsResponse struct {
+	AutoCheckEnabled	bool
+	AutomaticAppInstallationEnabled	bool
+	AutomaticOSInstallationEnabled bool
+	AutomaticSecurityUpdatesEnabled bool
+	BackgroundDownloadEnabled bool
+	CatalogURL	string
+	IsDefaultCatalog	bool
+	PerformPeriodicCheck	bool
+	PreviousScanDate	string
+	PreviousScanResult	int
 }
 
 // MacosQueryResponses contains macOS queryResponses

@@ -93,7 +93,7 @@ type OSUpdateSettingsResponse struct {
 
 // MacosQueryResponses contains macOS queryResponses
 type MacosQueryResponses struct {
-	OSUpdateSettings   map[string]string // OSX 10.11+
+	OSUpdateSettings   OSUpdateSettingsResponse // OSX 10.11+
 	LocalHostName      string            // OSX 10.11
 	HostName           string            // OSX 10.11
 	ActiveManagedUsers []string          // OSX 10.11

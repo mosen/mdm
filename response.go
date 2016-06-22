@@ -1,5 +1,7 @@
 package mdm
 
+import "time"
+
 // Response is an MDM Command Response
 type Response struct {
 	UDID           string
@@ -79,16 +81,16 @@ type IosQueryResponses struct {
 
 // OSUpdateSettingsResponse contains information about macOS update settings.
 type OSUpdateSettingsResponse struct {
-	AutoCheckEnabled                bool   `json:"auto_check_enabled"`
-	AutomaticAppInstallationEnabled bool   `json:"automatic_app_installation_enabled"`
-	AutomaticOSInstallationEnabled  bool   `json:"automatic_os_installation_enabled"`
-	AutomaticSecurityUpdatesEnabled bool   `json:"automatic_security_updates_enabled"`
-	BackgroundDownloadEnabled       bool   `json:"background_download_enabled"`
-	CatalogURL                      string `json:"catalog_url"`
-	IsDefaultCatalog                bool   `json:"is_default_catalog"`
-	PerformPeriodicCheck            bool   `json:"perform_periodic_check"`
-	PreviousScanDate                string `json:"previous_scan_date"`
-	PreviousScanResult              int    `json:"previous_scan_result"`
+	AutoCheckEnabled                bool      `json:"auto_check_enabled"`
+	AutomaticAppInstallationEnabled bool      `json:"automatic_app_installation_enabled"`
+	AutomaticOSInstallationEnabled  bool      `json:"automatic_os_installation_enabled"`
+	AutomaticSecurityUpdatesEnabled bool      `json:"automatic_security_updates_enabled"`
+	BackgroundDownloadEnabled       bool      `json:"background_download_enabled"`
+	CatalogURL                      string    `json:"catalog_url"`
+	IsDefaultCatalog                bool      `json:"is_default_catalog"`
+	PerformPeriodicCheck            bool      `json:"perform_periodic_check"`
+	PreviousScanDate                time.Time `json:"previous_scan_date"`
+	PreviousScanResult              int       `json:"previous_scan_result"`
 }
 
 // MacosQueryResponses contains macOS queryResponses

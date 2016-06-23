@@ -1,8 +1,8 @@
 package mdm
 
 import (
-	"testing"
 	"github.com/groob/plist"
+	"testing"
 )
 
 var (
@@ -983,8 +983,7 @@ func TestQueryResponseMac(t *testing.T) {
 	err := plist.Unmarshal(plistBuf, response)
 
 	if err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 }
 
@@ -994,8 +993,7 @@ func TestQueryResponseIpadIOS8(t *testing.T) {
 	err := plist.Unmarshal(plistBuf, response)
 
 	if err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 }
 
@@ -1005,7 +1003,6 @@ func TestQueryResponseIphoneIOS8(t *testing.T) {
 	err := plist.Unmarshal(plistBuf, response)
 
 	if err != nil {
-		t.Log(err)
-		t.Fail()
+		t.Fatal(err)
 	}
 }

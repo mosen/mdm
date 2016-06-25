@@ -10,6 +10,7 @@ type Response struct {
 	CommandUUID    string
 	RequestType    string         `json:"request_type,omitempty" plist:",omitempty"`
 	QueryResponses QueryResponses `json:"query_responses,omitempty" plist:",omitempty"`
+	SecurityInfo   SecurityInfo   `json:"security_info,omitempty" plist:",omitempty"`
 }
 
 // CommonQueryResponses has a list of query responses common to all device types
@@ -107,4 +108,16 @@ type QueryResponses struct {
 	MacosQueryResponses
 	IosQueryResponses
 	AtvQueryResponses
+}
+
+// SecurityInfo is the SecurityInfo MDM Command Response
+type SecurityInfo struct {
+	FDEEnabled                     bool `json:"fde_enabled,omitempty"` // OSX
+	FDEHasPersonalRecoveryKey      bool `json:"fde_has_personal_recovery_key,omitempty"`
+	FDEHasInstitutionalRecoveryKey bool `json:"fde_has_institutional_recovery_key,omitempty"`
+
+	HardwareEncryptionCaps        int  `json:"hardware_encryption_caps,omitempty"` // iOS
+	PasscodeCompliant             bool `json:"passcode_compliant,omitempty"`
+	PasscodeCompliantWithProfiles bool `json:"passcode_compliant_with_profiles,omitempty"`
+	PasscodePresent               bool `json:"passcode_present,omitempty"`
 }

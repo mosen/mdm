@@ -975,6 +975,51 @@ var (
 	<string>1111111111111111111111111111111111111112</string>
 </dict>
 </plist>`
+
+	macOSElCapSecurityInfoNoFDE = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CommandUUID</key>
+	<string>1111111111111111111111111111111111111111</string>
+	<key>RequestType</key>
+	<string>SecurityInfo</string>
+	<key>SecurityInfo</key>
+	<dict>
+		<key>FDE_Enabled</key>
+		<false/>
+	</dict>
+	<key>Status</key>
+	<string>Acknowledged</string>
+	<key>UDID</key>
+	<string>1111111111111111111111111111111111111111</string>
+</dict>
+</plist>
+	`
+
+	ios8IpadSecurityInfo = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CommandUUID</key>
+	<string>1111111111111111111111111111111111111112</string>
+	<key>SecurityInfo</key>
+	<dict>
+		<key>HardwareEncryptionCaps</key>
+		<integer>3</integer>
+		<key>PasscodeCompliant</key>
+		<true/>
+		<key>PasscodeCompliantWithProfiles</key>
+		<true/>
+		<key>PasscodePresent</key>
+		<false/>
+	</dict>
+	<key>Status</key>
+	<string>Acknowledged</string>
+	<key>UDID</key>
+	<string>1111111111111111111111111111111111111112</string>
+</dict>
+</plist>`
 )
 
 func TestQueryResponseMac(t *testing.T) {
@@ -1000,6 +1045,26 @@ func TestQueryResponseIpadIOS8(t *testing.T) {
 func TestQueryResponseIphoneIOS8(t *testing.T) {
 	response := &Response{}
 	plistBuf := []byte(ios8IphoneQueryResponses)
+	err := plist.Unmarshal(plistBuf, response)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestSecurityInfoMac(t *testing.T) {
+	response := &Response{}
+	plistBuf := []byte(macOSElCapSecurityInfoNoFDE)
+	err := plist.Unmarshal(plistBuf, response)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestSecurityInfoIpadIOS8(t *testing.T) {
+	response := &Response{}
+	plistBuf := []byte(ios8IpadSecurityInfo)
 	err := plist.Unmarshal(plistBuf, response)
 
 	if err != nil {

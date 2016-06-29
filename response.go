@@ -4,13 +4,14 @@ import "time"
 
 // Response is an MDM Command Response
 type Response struct {
-	UDID           string
-	UserID         *string `json:"user_id,omitempty" plist:"UserID,omitempty"`
-	Status         string
-	CommandUUID    string
-	RequestType    string         `json:"request_type,omitempty" plist:",omitempty"`
-	QueryResponses QueryResponses `json:"query_responses,omitempty" plist:",omitempty"`
-	SecurityInfo   SecurityInfo   `json:"security_info,omitempty" plist:",omitempty"`
+	UDID            string
+	UserID          *string `json:"user_id,omitempty" plist:"UserID,omitempty"`
+	Status          string
+	CommandUUID     string
+	RequestType     string          `json:"request_type,omitempty" plist:",omitempty"`
+	QueryResponses  QueryResponses  `json:"query_responses,omitempty" plist:",omitempty"`
+	SecurityInfo    SecurityInfo    `json:"security_info,omitempty" plist:",omitempty"`
+	CertificateList CertificateList `json:"certificate_list,omitempty" plist:",omitempty"`
 }
 
 // CommonQueryResponses has a list of query responses common to all device types
@@ -121,3 +122,12 @@ type SecurityInfo struct {
 	PasscodeCompliantWithProfiles bool `json:"passcode_compliant_with_profiles,omitempty"`
 	PasscodePresent               bool `json:"passcode_present,omitempty"`
 }
+
+type CertificateListItem struct {
+	CommonName string `json:"common_name"`
+	Data       []byte `json:"data"`
+	IsIdentity bool   `json:"is_identity"`
+}
+
+// CertificateList is the CertificateList MDM Command Response
+type CertificateList []CertificateListItem

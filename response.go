@@ -171,3 +171,12 @@ type UsersListItem struct {
 }
 
 type UsersListResponse []UsersListItem
+
+type ErrorChainItem struct {
+	ErrorCode            int    `json:"error_code,omitempty"`
+	ErrorDomain          string `json:"error_domain,omitempty"`
+	LocalizedDescription string `json:"localized_description,omitempty"`
+	USEnglishDescription string `json:"us_english_description,omitempty"`
+}
+
+type ErrorChain []ErrorChainItem

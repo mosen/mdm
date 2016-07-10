@@ -17,6 +17,7 @@ type CommandRequest struct {
 	AccountConfiguration
 	ScheduleOSUpdateScan
 	InstallProfile
+	InstalledApplicationList
 }
 
 // Payload is an MDM payload
@@ -30,6 +31,7 @@ type command struct {
 	DeviceInformation
 	InstallApplication
 	InstallProfile
+	InstalledApplicationList
 	AccountConfiguration
 	ScheduleOSUpdateScan
 }
@@ -247,6 +249,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		payload.Command.InstallProfile = request.InstallProfile
 	case "AccountConfiguration":
 		payload.Command.AccountConfiguration = request.AccountConfiguration
+	case "InstalledApplicationList":
+		payload.Command.InstalledApplicationList = request.InstalledApplicationList
 	default:
 		return nil, fmt.Errorf("Unsupported MDM RequestType %v", requestType)
 	}

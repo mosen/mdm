@@ -70,7 +70,47 @@ func TestDeviceLock(t *testing.T) {
 }
 
 func TestClearPasscode(t *testing.T) {
-	cmd := ClearPasscode{UnlockToken: "abcdefg"}
+	cmd := ClearPasscode{UnlockToken: []byte{00}}
+	testMarshalJSON(t, cmd)
+	testMarshalPlist(t, cmd)
+}
+
+func TestEraseDevice(t *testing.T) {
+	cmd := EraseDevice{PIN: "123456"}
+	testMarshalJSON(t, cmd)
+	testMarshalPlist(t, cmd)
+}
+
+func TestRequestMirroring(t *testing.T) {
+	cmd := RequestMirroring{DestinationName: "Apple TV", ScanTime: "30", Password: "sekret"}
+	testMarshalJSON(t, cmd)
+	testMarshalPlist(t, cmd)
+}
+
+//func TestRestrictions(t *testing.T) {
+//	cmd := Restrictions{}
+//}
+
+func TestDeleteUser(t *testing.T) {
+	cmd := DeleteUser{UserName: "joe", ForceDeletion: false}
+	testMarshalJSON(t, cmd)
+	testMarshalPlist(t, cmd)
+}
+
+func TestEnableLostMode(t *testing.T) {
+	cmd := EnableLostMode{Message: "Lost!", PhoneNumber: "123-4567", Footnote: "This is lost"}
+	testMarshalJSON(t, cmd)
+	testMarshalPlist(t, cmd)
+}
+
+func TestInstallApplication(t *testing.T) {
+	cmd := InstallApplication{ITunesStoreID: 1234567}
+	testMarshalJSON(t, cmd)
+	testMarshalPlist(t, cmd)
+}
+
+func TestApplyRedemptionCode(t *testing.T) {
+	cmd := ApplyRedemptionCode{Identifier: "id", RedemptionCode: "abcdefg"}
 	testMarshalJSON(t, cmd)
 	testMarshalPlist(t, cmd)
 }

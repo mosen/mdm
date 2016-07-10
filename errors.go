@@ -3,175 +3,175 @@ package mdm
 type MCProfileErrorDomain int
 
 const (
-	MalformedProfile MCProfileErrorDomain = iota + 1000
-	UnsupportedProfileVersion
-	MissingRequiredField
-	BadDataTypeInField
-	BadSignature
-	EmptyProfile
-	CannotDecrypt
-	NonUniqueUUIDs
-	NonUniquePayloadIdentifiers
-	ProfileInstallationFailure
-	UnsupportedFieldValue
+	prMalformedProfile MCProfileErrorDomain = iota + 1000
+	prUnsupportedProfileVersion
+	prMissingRequiredField
+	prBadDataTypeInField
+	prBadSignature
+	prEmptyProfile
+	prCannotDecrypt
+	prNonUniqueUUIDs
+	prNonUniquePayloadIdentifiers
+	prProfileInstallationFailure
+	prUnsupportedFieldValue
 )
 
 type MCPayloadErrorDomain int
 
 const (
-	MalformedPayload MCPayloadErrorDomain = iota + 2000
-	UnsupportedPayloadVersion
-	MissingRequiredField
-	BadDataTypeInField
-	UnsupportedFieldValue
-	InternalError
+	plMalformedPayload MCPayloadErrorDomain = iota + 2000
+	plUnsupportedPayloadVersion
+	plMissingRequiredField
+	plBadDataTypeInField
+	plUnsupportedFieldValue
+	plInternalError
 )
 
 type MCRestrictionsErrorDomain int
 
 const (
-	InconsistentRestrictionSense MCRestrictionsErrorDomain = iota + 3000
-	InconsistentValueComparisonSense
+	rsInconsistentRestrictionSense MCRestrictionsErrorDomain = iota + 3000
+	rsInconsistentValueComparisonSense
 )
 
 type MCInstallationErrorDomain int
 
 const (
-	CannotParseProfile MCInstallationErrorDomain = iota + 4000
-	InstallationFailure
-	DuplicateUUID
-	ProfileNotQueued
-	UserCancelled
-	PasscodeNotCompliant
-	ProfileRemovalDateInPast
-	UnrecognisedFileFormat
-	MismatchedCertificates
-	DeviceLocked
-	UpdatedProfileWrongIdentifier
-	FinalProfileNotConfiguration
-	ProfileNotUpdatable
-	UpdateFailed
-	NoDeviceIdentity
-	ReplacementNoMDMPayload
-	InternalError
-	MultipleHTTPProxyPayloads
-	MultipleCellularPayloads
-	MultipleApplockPayloads
-	UIInstallProhibited
-	ProfileMustBeNonInteractive
-	ProfileMustBeInstalledByMDM
-	UnnacceptablePayload
-	ProfileNotFound
-	InvalidSupervision
-	RemovalDateInPast
-	ProfileRequiresPasscodeChange
-	MultipleHomeScreenPayloads
-	MultipleNotificationPayloads
-	UnacceptablePayloadMultiuser
-	PayloadContainsSensitiveInfo
+	inCannotParseProfile MCInstallationErrorDomain = iota + 4000
+	inInstallationFailure
+	inDuplicateUUID
+	inProfileNotQueued
+	inUserCancelled
+	inPasscodeNotCompliant
+	inProfileRemovalDateInPast
+	inUnrecognisedFileFormat
+	inMismatchedCertificates
+	inDeviceLocked
+	inUpdatedProfileWrongIdentifier
+	inFinalProfileNotConfiguration
+	inProfileNotUpdatable
+	inUpdateFailed
+	inNoDeviceIdentity
+	inReplacementNoMDMPayload
+	inInternalError
+	inMultipleHTTPProxyPayloads
+	inMultipleCellularPayloads
+	inMultipleApplockPayloads
+	inUIInstallProhibited
+	inProfileMustBeNonInteractive
+	inProfileMustBeInstalledByMDM
+	inUnnacceptablePayload
+	inProfileNotFound
+	inInvalidSupervision
+	inRemovalDateInPast
+	inProfileRequiresPasscodeChange
+	inMultipleHomeScreenPayloads
+	inMultipleNotificationPayloads
+	inUnacceptablePayloadMultiuser
+	inPayloadContainsSensitiveInfo
 )
 
 type MCPasscodeErrorDomain int
 
 const (
-	PasscodeTooShort MCPasscodeErrorDomain = iota + 5000
-	TooFewUniqueChars
-	TooFewComplexChars
-	RepeatingChars
-	AscendingDescendingChars
-	RequiresNumber
-	RequiresAlpha
-	PasscodeExpired
-	PasscodeTooRecent
+	pcPasscodeTooShort MCPasscodeErrorDomain = iota + 5000
+	pcTooFewUniqueChars
+	pcTooFewComplexChars
+	pcRepeatingChars
+	pcAscendingDescendingChars
+	pcRequiresNumber
+	pcRequiresAlpha
+	pcPasscodeExpired
+	pcPasscodeTooRecent
 	_
-	DeviceLocked
-	WrongPasscode
+	pcDeviceLocked
+	pcWrongPasscode
 	_
-	CannotClearPasscode
-	CannotSetPasscode
-	CannotSetGracePeriod
-	CannotSetFingerprintUnlock
-	CannotSetFingerprintPurchase
-	CannotSetMaxAttempts
+	pcCannotClearPasscode
+	pcCannotSetPasscode
+	pcCannotSetGracePeriod
+	pcCannotSetFingerprintUnlock
+	pcCannotSetFingerprintPurchase
+	pcCannotSetMaxAttempts
 )
 
 type MCKeychainErrorDomain int
 
 const (
-	KeychainSystemError MCKeychainErrorDomain = iota + 6000
-	EmptyString
-	CannotCreateQuery
+	kcKeychainSystemError MCKeychainErrorDomain = iota + 6000
+	kcEmptyString
+	kcCannotCreateQuery
 )
 
 type MCEmailErrorDomain int
 
 const (
-	HostUnreachable MCEmailErrorDomain = iota + 7000
-	InvalidCredentials
-	UnknownValidationError
-	SMIMECertificateNotFound
-	SMIMECertificateBad
-	IMAPMisconfigured
-	POPMisconfigured
-	SMTPMisconfigured
+	emHostUnreachable MCEmailErrorDomain = iota + 7000
+	emInvalidCredentials
+	emUnknownValidationError
+	emSMIMECertificateNotFound
+	emSMIMECertificateBad
+	emIMAPMisconfigured
+	emPOPMisconfigured
+	emSMTPMisconfigured
 )
 
 type MCWebClipErrorDomain int
 
 const (
-	CannotInstallWebClip MCWebClipErrorDomain = iota + 8000
+	wcCannotInstallWebClip MCWebClipErrorDomain = iota + 8000
 )
 
 type MCCertificateErrorDomain int
 
 const (
-	InvalidPassword MCCertificateErrorDomain = iota + 9000
-	TooManyCertificatesInPayload
-	CannotStoreCertificate
-	CannotStoreWAPIData
-	CannotStoreRootCertificate
-	CertificateMalformed
-	CertificateNotIdentity
+	ceInvalidPassword MCCertificateErrorDomain = iota + 9000
+	ceTooManyCertificatesInPayload
+	ceCannotStoreCertificate
+	ceCannotStoreWAPIData
+	ceCannotStoreRootCertificate
+	ceCertificateMalformed
+	ceCertificateNotIdentity
 )
 
 type MCDefaultsErrorDomain int
 
 const (
-	CannotInstallDefaults MCDefaultsErrorDomain = iota + 10000
-	InvalidSigner
+	deCannotInstallDefaults MCDefaultsErrorDomain = iota + 10000
+	deInvalidSigner
 )
 
 type MCAPNErrorDomain int
 
 const (
-	CannotInstallAPN MCAPNErrorDomain = iota + 11000
-	CustomAPNAlreadyInstalled
+	apnCannotInstallAPN MCAPNErrorDomain = iota + 11000
+	apnCustomAPNAlreadyInstalled
 )
 
 type MCMDMErrorDomain int
 
 const (
-	InvalidAccessRights MCMDMErrorDomain = iota + 12000
-	MultipleMDMInstances
-	CannotCheckIn
-	InvalidChallengeResponse
-	InvalidPushCertificate
-	CannotFindCertificate
-	RedirectRefused
-	NotAuthorized
-	MalformedRequest
-	InvalidReplacementProfile
-	InternalConsistencyError
-	InvalidMDMConfiguration
-	MDMReplacementMismatch
-	ProfileNotManaged
-	ProvisioningProfileNotManaged
-	CannotGetPushToken
-	MissingIdentity
-	CannotCreateEscrowKeybag
-	CannotCopyEscrowKeybagData
-	CannotCopyEscrowSecret
-	UnauthorizedByServer
-	InvalidRequestType
-	InvalidTopic
+	mdmInvalidAccessRights MCMDMErrorDomain = iota + 12000
+	mdmMultipleMDMInstances
+	mdmCannotCheckIn
+	mdmInvalidChallengeResponse
+	mdmInvalidPushCertificate
+	mdmCannotFindCertificate
+	mdmRedirectRefused
+	mdmNotAuthorized
+	mdmMalformedRequest
+	mdmInvalidReplacementProfile
+	mdmInternalConsistencyError
+	mdmInvalidMDMConfiguration
+	mdmMDMReplacementMismatch
+	mdmProfileNotManaged
+	mdmProvisioningProfileNotManaged
+	mdmCannotGetPushToken
+	mdmMissingIdentity
+	mdmCannotCreateEscrowKeybag
+	mdmCannotCopyEscrowKeybagData
+	mdmCannotCopyEscrowSecret
+	mdmUnauthorizedByServer
+	mdmInvalidRequestType
+	mdmInvalidTopic
 )

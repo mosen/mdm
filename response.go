@@ -180,3 +180,13 @@ type ErrorChainItem struct {
 }
 
 type ErrorChain []ErrorChainItem
+
+type InstalledApplicationListItem struct {
+	Name         string `json:"name,omitempty"` // This is the only compulsory field
+	BundleSize   int    `plist:",omitempty" json:"bundle_size,omitempty"`
+	Identifier   string `plist:",omitempty" json:"identifier,omitempty"`
+	ShortVersion string `plist:",omitempty" json:"short_version,omitempty"`
+	Version      string `plist:",omitempty" json:"version,omitempty"`
+}
+
+type InstalledApplicationListResponse []InstalledApplicationListItem

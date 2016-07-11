@@ -3,6 +3,7 @@ package mdm
 import (
 	"github.com/groob/plist"
 	"github.com/micromdm/mdm/test"
+	"io/ioutil"
 	"testing"
 )
 
@@ -53,5 +54,44 @@ func TestSecurityInfoIpadIOS8(t *testing.T) {
 
 	if err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestErrorChain(t *testing.T) {
+	errorResponseBody, err := ioutil.ReadFile("./test/responses/error_invalidreq.plist")
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	response := &Response{}
+	if err := plist.Unmarshal(errorResponseBody, response); err != nil {
+		t.Fatal(err)
+	}
+
+	if response.Status != "Error" {
+		t.Fatal("Response status was not `Error`.")
+	}
+
+	if response.ErrorChain == nil {
+		t.Fatal("Response did not contain expected error chain struct")
+	}
+
+	for _, v := range response.ErrorChain {
+		if v.ErrorCode == 0 {
+			t.Fatal("Error response did not contain ErrorCode")
+		}
+
+		if v.ErrorDomain == "" {
+			t.Fatal("Error response did not contain ErrorDomain")
+		}
+
+		if v.LocalizedDescription == "" {
+			t.Fatal("Error response did not contain localized description")
+		}
+
+		if v.USEnglishDescription == "" {
+			t.Fatal("Error response did not contain english description")
+		}
 	}
 }

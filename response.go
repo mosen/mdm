@@ -8,10 +8,11 @@ type Response struct {
 	UserID          *string `json:"user_id,omitempty" plist:"UserID,omitempty"`
 	Status          string
 	CommandUUID     string
-	RequestType     string          `json:"request_type,omitempty" plist:",omitempty"`
-	QueryResponses  QueryResponses  `json:"query_responses,omitempty" plist:",omitempty"`
-	SecurityInfo    SecurityInfo    `json:"security_info,omitempty" plist:",omitempty"`
-	CertificateList CertificateList `json:"certificate_list,omitempty" plist:",omitempty"`
+	RequestType     string           `json:"request_type,omitempty" plist:",omitempty"`
+	ErrorChain      []ErrorChainItem `json:"error_chain" plist:",omitempty"`
+	QueryResponses  QueryResponses   `json:"query_responses,omitempty" plist:",omitempty"`
+	SecurityInfo    SecurityInfo     `json:"security_info,omitempty" plist:",omitempty"`
+	CertificateList CertificateList  `json:"certificate_list,omitempty" plist:",omitempty"`
 }
 
 type ProvisioningProfileListItem struct {

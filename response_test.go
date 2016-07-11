@@ -1,6 +1,7 @@
 package mdm
 
 import (
+	"fmt"
 	"github.com/groob/plist"
 	"github.com/micromdm/mdm/test"
 	"io/ioutil"
@@ -94,4 +95,27 @@ func TestErrorChain(t *testing.T) {
 			t.Fatal("Error response did not contain english description")
 		}
 	}
+}
+
+func TestInstalledApplicationListResponse(t *testing.T) {
+	appListResponseBody, err := ioutil.ReadFile("./test/responses/installed_application_list.plist")
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	response := &Response{}
+	if err := plist.Unmarshal(appListResponseBody, response); err != nil {
+		t.Fatal(err)
+	}
+
+	if response.Status != "Acknowledged" {
+		t.Fatal("Response status was not `Acknowledged`.")
+	}
+
+	if response.InstalledApplicationList == nil {
+		t.Fatal("No installed application list in response")
+	}
+
+	fmt.Printf("%v\n", response)
 }

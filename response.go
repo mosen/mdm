@@ -35,7 +35,7 @@ type InstalledApplicationListItem struct {
 	Identifier   string `plist:",omitempty" json:"identifier,omitempty"`
 	Version      string `plist:",omitempty" json:"version,omitempty"`
 	ShortVersion string `plist:",omitempty" json:"short_version,omitempty"`
-	Name         string `plist:",omitempty" json:"name,omitempty"`
+	Name         string `json:"name,omitempty"`
 	BundleSize   int    `plist:",omitempty" json:"bundle_size,omitempty"`
 	DynamicSize  int    `plist:",omitempty" json:"dynamic_size,omitempty"`
 	IsValidated  bool   `plist:",omitempty" json:"is_validated,omitempty"`
@@ -172,6 +172,7 @@ type UsersListItem struct {
 
 type UsersListResponse []UsersListItem
 
+// Represents a single error in the error chain response
 type ErrorChainItem struct {
 	ErrorCode            int    `json:"error_code,omitempty"`
 	ErrorDomain          string `json:"error_domain,omitempty"`
@@ -180,13 +181,3 @@ type ErrorChainItem struct {
 }
 
 type ErrorChain []ErrorChainItem
-
-type InstalledApplicationListItem struct {
-	Name         string `json:"name,omitempty"` // This is the only compulsory field
-	BundleSize   int    `plist:",omitempty" json:"bundle_size,omitempty"`
-	Identifier   string `plist:",omitempty" json:"identifier,omitempty"`
-	ShortVersion string `plist:",omitempty" json:"short_version,omitempty"`
-	Version      string `plist:",omitempty" json:"version,omitempty"`
-}
-
-type InstalledApplicationListResponse []InstalledApplicationListItem

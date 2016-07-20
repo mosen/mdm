@@ -38,8 +38,8 @@ type InstalledApplicationListItem struct {
 	Version      string `plist:",omitempty" json:"version,omitempty"`
 	ShortVersion string `plist:",omitempty" json:"short_version,omitempty"`
 	Name         string `json:"name,omitempty"`
-	BundleSize   int    `plist:",omitempty" json:"bundle_size,omitempty"`
-	DynamicSize  int    `plist:",omitempty" json:"dynamic_size,omitempty"`
+	BundleSize   uint32 `plist:",omitempty" json:"bundle_size,omitempty"`
+	DynamicSize  uint32 `plist:",omitempty" json:"dynamic_size,omitempty"`
 	IsValidated  bool   `plist:",omitempty" json:"is_validated,omitempty"`
 }
 

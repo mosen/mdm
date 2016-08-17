@@ -128,10 +128,10 @@ type OSUpdateSettingsResponse struct {
 
 // MacosQueryResponses contains macOS queryResponses
 type MacosQueryResponses struct {
-	OSUpdateSettings   OSUpdateSettingsResponse // OSX 10.11+
-	LocalHostName      string                   `json:"local_host_name,omitempty"` // OSX 10.11
-	HostName           string                   `json:"host_name,omitempty"`       // OSX 10.11
-	ActiveManagedUsers []string                 `json:"active_managed_users"`      // OSX 10.11
+	OSUpdateSettings   OSUpdateSettingsResponse `json:"os_update_settings,omitempty"` // OSX 10.11+
+	LocalHostName      string                   `json:"local_host_name,omitempty"`    // OSX 10.11
+	HostName           string                   `json:"host_name,omitempty"`          // OSX 10.11
+	ActiveManagedUsers []string                 `json:"active_managed_users"`         // OSX 10.11
 }
 
 // QueryResponses is a DeviceInformation MDM Command Response

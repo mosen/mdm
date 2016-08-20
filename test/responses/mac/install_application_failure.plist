@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CommandUUID</key>
+	<string>00000000-1111-2222-3333-444455556666</string>
+	<key>ErrorChain</key>
+	<array>
+		<dict>
+			<key>ErrorCode</key>
+			<integer>97</integer>
+			<key>ErrorDomain</key>
+			<string>MDMClientError</string>
+			<key>LocalizedDescription</key>
+			<string>PurchaseMethod must be 1 &lt;MDMClientError:97&gt;</string>
+		</dict>
+	</array>
+	<key>RejectionReason</key>
+	<string>PurchaseMethodNotSupported</string>
+	<key>RequestType</key>
+	<string>InstallApplication</string>
+	<key>Status</key>
+	<string>Error</string>
+	<key>UDID</key>
+	<string>00000000-1111-2222-3333-444455556666</string>
+</dict>
+</plist>

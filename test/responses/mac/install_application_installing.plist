@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CommandUUID</key>
+	<string>00000000-1111-2222-3333-444455556666</string>
+	<key>RequestType</key>
+	<string>InstallApplication</string>
+	<key>State</key>
+	<string>Installing</string>
+	<key>Status</key>
+	<string>Acknowledged</string>
+	<key>UDID</key>
+	<string>00000000-1111-2222-3333-444455556666</string>
+</dict>
+</plist>

@@ -144,9 +144,9 @@ type QueryResponses struct {
 
 // SecurityInfo is the SecurityInfo MDM Command Response
 type SecurityInfo struct {
-	FDEEnabled                     bool `json:"fde_enabled,omitempty"` // OSX
-	FDEHasPersonalRecoveryKey      bool `json:"fde_has_personal_recovery_key,omitempty"`
-	FDEHasInstitutionalRecoveryKey bool `json:"fde_has_institutional_recovery_key,omitempty"`
+	FDEEnabled                     bool `json:"fde_enabled,omitempty" plist:"FDE_Enabled,omitempty"` // OSX
+	FDEHasPersonalRecoveryKey      bool `json:"fde_has_personal_recovery_key,omitempty" plist:"FDE_HasPersonalRecoveryKey,omitempty"`
+	FDEHasInstitutionalRecoveryKey bool `json:"fde_has_institutional_recovery_key,omitempty" plist:"FDE_HasInstitutionalRecoveryKey,omitempty"`
 
 	HardwareEncryptionCaps        int  `json:"hardware_encryption_caps,omitempty"` // iOS
 	PasscodeCompliant             bool `json:"passcode_compliant,omitempty"`

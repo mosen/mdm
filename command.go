@@ -18,6 +18,7 @@ type CommandRequest struct {
 	ScheduleOSUpdateScan
 	InstallProfile
 	InstalledApplicationList
+	Restrictions
 }
 
 // Payload is an MDM payload
@@ -34,6 +35,7 @@ type command struct {
 	InstalledApplicationList
 	AccountConfiguration
 	ScheduleOSUpdateScan
+	Restrictions
 }
 
 // The following commands are in the order provided by the apple documentation.
@@ -251,6 +253,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		payload.Command.AccountConfiguration = request.AccountConfiguration
 	case "InstalledApplicationList":
 		payload.Command.InstalledApplicationList = request.InstalledApplicationList
+	case "Restrictions":
+		payload.Command.Restrictions = request.Restrictions
 	default:
 		return nil, fmt.Errorf("Unsupported MDM RequestType %v", requestType)
 	}

@@ -4,14 +4,46 @@ import "time"
 
 // Response is an MDM Command Response
 type Response struct {
-	UDID           string
-	UserID         *string `json:"user_id,omitempty" plist:"UserID,omitempty"`
-	Status         string
-	CommandUUID    string
-	RequestType    string         `json:"request_type,omitempty" plist:",omitempty"`
-	QueryResponses QueryResponses `json:"query_responses,omitempty" plist:",omitempty"`
-	SecurityInfo   SecurityInfo   `json:"security_info,omitempty" plist:",omitempty"`
+	UDID                     string
+	UserID                   *string `json:"user_id,omitempty" plist:"UserID,omitempty"`
+	Status                   string
+	CommandUUID              string
+	RequestType              string                           `json:"request_type,omitempty" plist:",omitempty"`
+	ErrorChain               []ErrorChainItem                 `json:"error_chain" plist:",omitempty"`
+	QueryResponses           QueryResponses                   `json:"query_responses,omitempty" plist:",omitempty"`
+	SecurityInfo             SecurityInfo                     `json:"security_info,omitempty" plist:",omitempty"`
+	CertificateList          CertificateList                  `json:"certificate_list,omitempty" plist:",omitempty"`
+	InstalledApplicationList InstalledApplicationListResponse `json:"installed_application_list,omitempty" plist:",omitempty"`
 }
+
+type ProvisioningProfileListItem struct {
+	Name       string    `plist:",omitempty" json:"name,omitempty"`
+	UUID       string    `plist:",omitempty" json:"uuid,omitempty"`
+	ExpiryDate time.Time `plist:",omitempty" json:"expiry_date,omitempty"`
+}
+
+type ProvisioningProfileListResponse []ProvisioningProfileListItem
+
+type CertificateListItem struct {
+	CommonName string `json:"common_name"`
+	Data       []byte `json:"data"`
+	IsIdentity bool   `json:"is_identity"`
+}
+
+// CertificateList is the CertificateList MDM Command Response
+type CertificateList []CertificateListItem
+
+type InstalledApplicationListItem struct {
+	Identifier   string `plist:",omitempty" json:"identifier,omitempty"`
+	Version      string `plist:",omitempty" json:"version,omitempty"`
+	ShortVersion string `plist:",omitempty" json:"short_version,omitempty"`
+	Name         string `json:"name,omitempty"`
+	BundleSize   uint32 `plist:",omitempty" json:"bundle_size,omitempty"`
+	DynamicSize  uint32 `plist:",omitempty" json:"dynamic_size,omitempty"`
+	IsValidated  bool   `plist:",omitempty" json:"is_validated,omitempty"`
+}
+
+type InstalledApplicationListResponse []InstalledApplicationListItem
 
 // CommonQueryResponses has a list of query responses common to all device types
 type CommonQueryResponses struct {
@@ -121,3 +153,33 @@ type SecurityInfo struct {
 	PasscodeCompliantWithProfiles bool `json:"passcode_compliant_with_profiles,omitempty"`
 	PasscodePresent               bool `json:"passcode_present,omitempty"`
 }
+
+type RequestMirroringResponse struct {
+	MirroringResult string `json:"mirroring_result,omitempty"`
+}
+
+//type GlobalRestrictions struct {
+//	RestrictedBool map[string]bool `plist:"restrictedBool,omitempty" json:"restricted_bool,omitempty"`
+//	RestrictedValue map[string]int `plist:"restrictedValue,omitempty" json:"restricted_value,omitempty"`
+//	Intersection map[string]string `plist:"intersection,omitempty" json:"intersection,omitempty"` // TODO: not actually string values
+//	Union map[string]string `plist:"union,omitempty" json:"union,omitempty"` // TODO: not actually string values
+//}
+
+type UsersListItem struct {
+	UserName      string `json:"user_name,omitempty"`
+	HasDataToSync bool   `json:"has_data_to_sync,omitempty"`
+	DataQuota     int    `json:"data_quota,omitempty"`
+	DataUsed      int    `json:"data_used,omitempty"`
+}
+
+type UsersListResponse []UsersListItem
+
+// Represents a single error in the error chain response
+type ErrorChainItem struct {
+	ErrorCode            int    `json:"error_code,omitempty"`
+	ErrorDomain          string `json:"error_domain,omitempty"`
+	LocalizedDescription string `json:"localized_description,omitempty"`
+	USEnglishDescription string `json:"us_english_description,omitempty"`
+}
+
+type ErrorChain []ErrorChainItem

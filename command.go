@@ -44,6 +44,7 @@ type command struct {
 	InstalledApplicationList
 	AccountConfiguration
 	ScheduleOSUpdateScan
+	EraseDevice
 }
 
 // The following commands are in the order provided by the apple documentation.
@@ -262,6 +263,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		payload.Command.AccountConfiguration = request.AccountConfiguration
 	case "InstalledApplicationList":
 		payload.Command.InstalledApplicationList = request.InstalledApplicationList
+	case "EraseDevice":
+		payload.Command.EraseDevice = request.EraseDevice
 	default:
 		return nil, fmt.Errorf("Unsupported MDM RequestType %v", requestType)
 	}

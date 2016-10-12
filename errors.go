@@ -1,5 +1,12 @@
 package mdm
 
+type NSPOSIXErrorDomain int
+
+const (
+	// posixParamError may be returned when the MDM command parameters are malformed.
+	posixParamError NSPOSIXErrorDomain = -2
+)
+
 type MCProfileErrorDomain int
 
 const (

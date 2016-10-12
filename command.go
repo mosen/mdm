@@ -17,7 +17,17 @@ type CommandRequest struct {
 	AccountConfiguration
 	ScheduleOSUpdateScan
 	InstallProfile
+	RemoveProfile
+	InstallProvisioningProfile
+	RemoveProvisioningProfile
 	InstalledApplicationList
+	DeviceLock
+	ClearPasscode
+	EraseDevice
+	RequestMirroring
+	Restrictions
+	DeleteUser
+	EnableLostMode
 }
 
 // Payload is an MDM payload
@@ -241,7 +251,8 @@ func NewPayload(request *CommandRequest) (*Payload, error) {
 		"ManagedMediaList",
 		"OSUpdateStatus",
 		"DeviceConfigured",
-		"AvailableOSUpdates":
+		"AvailableOSUpdates",
+		"Restrictions":
 		return payload, nil
 	case "InstallApplication":
 		payload.Command.InstallApplication = request.InstallApplication
